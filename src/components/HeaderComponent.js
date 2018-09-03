@@ -36,7 +36,6 @@ class Header extends Component {
     alert("Username: " + this.username.value + " Password: " + this.password.value
       + " Remember: " + this.remember.checked);
     event.preventDefault();
-
   }
 
   render() {
@@ -98,7 +97,7 @@ class Header extends Component {
                   <Input type="checkbox" name="remember"
                     innerRef={(input) => this.remember = input} />
                   Remember me
-                                </Label>
+                </Label>
               </FormGroup>
               <Button type="submit" value="submit" color="primary">Login</Button>
             </Form>
