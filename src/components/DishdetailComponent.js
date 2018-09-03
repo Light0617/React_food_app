@@ -1,16 +1,23 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
+import {
+	Card, CardImg, CardText, CardBody,
+	CardTitle, Breadcrumb, BreadcrumbItem
+} from 'reactstrap';
+import { Link } from 'react-router-dom';
+
 
 function RenderDish({ dish }) {
 	if (dish != null) {
 		return (
-			<Card>
-				<CardImg top src={dish.image} alt={dish.name} />
-				<CardBody>
-					<CardTitle> {dish.name} </CardTitle>
-					<CardText> {dish.description} </CardText>
-				</CardBody>
-			</Card>
+			<div className="col-12 col-md-5 m-1">
+				<Card>
+					<CardImg top src={dish.image} alt={dish.name} />
+					<CardBody>
+						<CardTitle> {dish.name} </CardTitle>
+						<CardText> {dish.description} </CardText>
+					</CardBody>
+				</Card>
+			</div>
 		);
 	} else {
 		return <Card />
@@ -22,19 +29,20 @@ function RenderComments({ comments }) {
 		const CommentsSummary = comments.map((comment) => {
 			let comment_date = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' })
 				.format(new Date(Date.parse(comment.date)));
-
 			return (
-				<ul className="list-unstyled">
-					<li>{comment.comment}</li>
-					<li> - - {comment.author}, {comment_date}</li>
-				</ul>
+					<li key={comment.id}>
+						<p>{comment.comment}</p>
+						<p>- - {comment.author}, {comment_date}</p>
+					</li>
 			);
 		});
 
 		return (
-			<div>
+			<div className="col-12 col-md-5 m-1">
 				<h4>Comments</h4>
-				{CommentsSummary}
+				<ul className="list-unstyled">
+					{CommentsSummary}
+				</ul>
 			</div>
 		);
 	} else {
@@ -48,12 +56,18 @@ const DishDetail = (props) => {
 		return (
 			<div className="container">
 				<div className="row">
-					<div className="col-12 col-md-5 m-1">
+					<Breadcrumb>
+						<BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
+						<BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+					</Breadcrumb>
+					<div className="col-12">
+						<h3>{props.dish.name}</h3>
+						<hr />
+					</div>
+				</div>
+				<div className="row">
 						<RenderDish dish={props.dish} />
-					</div>
-					<div className="col-12 col-md-5 m-1">
-						<RenderComments comments={props.dish.comments} />
-					</div>
+						<RenderComments comments={props.comments} />
 				</div>
 			</div>
 		);
