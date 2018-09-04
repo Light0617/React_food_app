@@ -1,9 +1,10 @@
 import React from 'react';
 import {
-	Card, CardImg, CardText, CardBody,
-	CardTitle, Breadcrumb, BreadcrumbItem
+	Card, CardImg, CardText, CardBody, Modal,
+	CardTitle, Breadcrumb, BreadcrumbItem, Button
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import CommentForm from './CommentFormComponent';
 
 
 function RenderDish({ dish }) {
@@ -24,6 +25,7 @@ function RenderDish({ dish }) {
 	}
 }
 
+
 function RenderComments({ comments }) {
 	if (comments != null) {
 		const CommentsSummary = comments.map((comment) => {
@@ -43,6 +45,7 @@ function RenderComments({ comments }) {
 				<ul className="list-unstyled">
 					{CommentsSummary}
 				</ul>
+				<CommentForm/>
 			</div>
 		);
 	} else {
