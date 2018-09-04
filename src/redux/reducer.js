@@ -10,6 +10,8 @@ export const initialState = {
   leaders: LEADERS
 }
 
+//not modify any state at this moment
+//initialize the state with initialState
 export const Reducer = (state = initialState, action) => {
   return state;
 }

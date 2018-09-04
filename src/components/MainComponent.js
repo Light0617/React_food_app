@@ -10,11 +10,6 @@ import Contact from './ContactComponent';
 import DishDetail from './DishdetailComponent';
 import About from './AboutComponent';
 
-import { COMMENTS } from '../shared/comments';
-import { PROMOTIONS } from '../shared/promotions';
-import { LEADERS } from '../shared/leaders';
-import { DISHES } from '../shared/dishes';
-
 const mapStateToProps = state => {
   return {
     dishes: state.dishes,
@@ -27,12 +22,6 @@ const mapStateToProps = state => {
 class Main extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      dishes: DISHES,
-      comments: COMMENTS,
-      promotions: PROMOTIONS,
-      leaders: LEADERS
-    };
   }
 
   render() {
