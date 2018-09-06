@@ -19,7 +19,6 @@ function RenderMenuItem({ dish, onClick }) {
 
 const Menu = (props) => {
 	const menu = props.dishes.dishes.map((dish) => {
-		//const menu = props.dishes.map((dish) => {
 		if (props.dishes.isLoading) {
 			return (
 				<div className="container">
